@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poème 5e3 📜🪶</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        .hidden { display: none; }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="loginPage" class="login-container fade-in">
+        <div class="card">
+            <h1>Bienvenue</h1>
+            <p>Choisissez pour continuer :</p>
+            <button class="login btn-eleve" onclick="loginAsEleve()">Connexion Élève</button>
+            <div id="profLogin" class="hidden" style="margin-top: 20px;">
+                <input type="password" id="password" placeholder="Mot de passe" class="input-field">
+                <button class="login btn-submit" onclick="loginAsProf()">Se connecter</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainPage" class="hidden fade-in">
+        <div class="sidebar">
+            <ul>
+                <li><input type="text" id="search" placeholder="Rechercher un poème" onkeyup="searchPoem()"></li>
+                <li class="poem-list" id="poemList">
+                    <button class="poem-button" onclick="scrollToPoem('poem1')">Les crampons</button>
+                    <button class="poem-button" onclick="scrollToPoem('poem2')">Le Dormeur du Val</button>
+                    <button class="poem-button" onclick="scrollToPoem('poem3')">Mignonne, allons voir si la rose</button>
+                </li>
+                <li><button id="addPoemButton" class="poem-button hidden" onclick="addPoem()">Ajouter un poème</button></li>
+            </ul>
+        </div>
+
+        <main>
+            <header>
+                <h1>Recueil de Poèmes</h1>
+                <p>Découvrez quelques poèmes de la classe.</p>
+            </header>
+
+            <div id="poemList">
+                <section id="poem1" class="poem fade-in" contenteditable="false">
+                    <h2>Les crampons</h2>
+                    <p>Ô mes crampons, que vous êtes beaux.<br>Quand je veux tirer, vous n'êtes pas un fléau.<br>J'irai par la forêt, j'irai par la montagne.<br>Votre couleur jaune et noire se marie.</p>
+                    <p>- Victor Hugo</p>
+                    <button class="delete-button hidden" onclick="deletePoem('poem1')">Supprimer</button>
+                </section>
+
+                <section id="poem2" class="poem fade-in" contenteditable="false">
+                    <h2>Le Dormeur du Val</h2>
+                    <p>C'est un trou de verdure où chante une rivière,<br>Accrochant follement aux herbes des haillons<br>D'argent ; où le soleil, de la montagne fière,<br>Luit : c'est un petit val qui mousse de rayons.</p>
+                    <p>- Arthur Rimbaud</p>
+                    <button class="delete-button hidden" onclick="deletePoem('poem2')">Supprimer</button>
+                </section>
+
+                <section id="poem3" class="poem fade-in" contenteditable="false">
+                    <h2>Mignonne, allons voir si la rose</h2>
+                    <p>Mignonne, allons voir si la rose<br>Qui ce matin avait déclose<br>Sa robe de pourpre au soleil,<br>A point perdu cette vesprée<br>Les plis de sa robe pourprée,<br>Et son teint au vôtre pareil.</p>
+                    <p>- Pierre de Ronsard</p>
+                    <button class="delete-button hidden" onclick="deletePoem('poem3')">Supprimer</button>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function loginAsEleve() {
+            document.getElementById("loginPage").classList.add("hidden");
+            document.getElementById("mainPage").classList.remove("hidden");
+        }
+
+        function loginAsProf() {
+            let password = document.getElementById("password").value;
+            if (password === "admin") {
+                document.getElementById("loginPage").classList.add("hidden");
+                document.getElementById("mainPage").classList.remove("hidden");
+            } else {
+                alert("Mot de passe incorrect !");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.getElementById("loginPage").classList.remove("fade-in");
+            }, 500);
+        });
+    </script>
+</body>
+</html>
