@@ -225,10 +225,10 @@ button.login:hover {
 
 /* Contenu principal */
 main {
-    margin-left: 250px; /* Ajuste l'espace pour la barre latérale réduite */
+    margin-left: 260px; /* Ajuste l'espace pour la barre latérale réduite */
     width: calc(100% - 250px);
     padding: 20px;
-    background-color: #ffffff;
+    background: linear-gradient(45deg, #ffffff, #535353);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
