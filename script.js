@@ -6,6 +6,34 @@ function showAlert(message, type = 'info') {
     document.body.appendChild(alert);
     setTimeout(() => alert.remove(), 3000); // Disparaît après 3 secondes
 }
+function openModal() {
+    document.getElementById("poemModal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("poemModal").style.display = "none";
+}
+
+function savePoem() {
+    let poem = document.getElementById("poemText").value;
+    if (poem.trim() === "") {
+        alert("Veuillez écrire un poème avant de sauvegarder.");
+        return;
+    }
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "save_poem.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert("Poème sauvegardé !");
+            closeModal();
+            document.getElementById("poemText").value = "";
+        }
+    };
+    xhr.send("poem=" + encodeURIComponent(poem));
+}
+
 
 // Fonction de filtrage des poèmes en fonction de la recherche
 function searchPoem() {
