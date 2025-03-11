@@ -41,7 +41,7 @@
                     <button class="poem-button" onclick="scrollToPoem('poem3')">Mignonne, allons voir si la rose</button>
                 </li>
                 <li><button id="addPoemButton" class="poem-button hidden" onclick="addPoem()">Ajouter un poème</button></li>
-                <div class="sidebar-version">V1.211</div>
+                <div class="sidebar-version">V1.21</div>
                 <button onclick="openModal()">Créer un poème</button>
 
             </ul>
@@ -81,8 +81,7 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Écrire un poème</h2>
             <form id="poemForm">
-                <input type="text" id="poemTitle" placeholder="Titre du poème" required>
-                <textarea id="poemText" rows="5" cols="50" placeholder="Écrivez votre poème ici..." required></textarea>
+                <textarea id="poemText" rows="5" cols="50" placeholder="Écrivez votre poème ici..."></textarea>
                 <br>
                 <button type="button" onclick="savePoem()">Sauvegarder</button>
             </form>

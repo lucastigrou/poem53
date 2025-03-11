@@ -6,55 +6,6 @@ function showAlert(message, type = 'info') {
     document.body.appendChild(alert);
     setTimeout(() => alert.remove(), 3000); // Disparaît après 3 secondes
 }
-function savePoem() {
-    let title = document.getElementById("poemTitle").value.trim();
-    let poem = document.getElementById("poemText").value.trim();
-
-    if (title === "" || poem === "") {
-        alert("Veuillez remplir tous les champs.");
-        return;
-    }
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "save_poem.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            alert("Poème sauvegardé !");
-            addPoemToPage(title, poem);
-            closeModal();
-            document.getElementById("poemTitle").value = "";
-            document.getElementById("poemText").value = "";
-        }
-    };
-    xhr.send("title=" + encodeURIComponent(title) + "&poem=" + encodeURIComponent(poem));
-}
-
-function addPoemToPage(title, poem) {
-    const poemCount = document.querySelectorAll('.poem').length + 1;
-    const newPoemId = `poem${poemCount}`;
-
-    const poemList = document.getElementById('poemList');
-    const main = document.querySelector('main');
-
-    const newButton = document.createElement('button');
-    newButton.className = 'poem-button';
-    newButton.textContent = title;
-    newButton.setAttribute('onclick', `scrollToPoem('${newPoemId}')`);
-    poemList.appendChild(newButton);
-
-    const newSection = document.createElement('section');
-    newSection.id = newPoemId;
-    newSection.className = 'poem fade-in';
-    newSection.innerHTML = `
-        <h2>${title}</h2>
-        <p>${poem.replace(/\n/g, "<br>")}</p>
-        <button class="delete-button" onclick="deletePoem('${newPoemId}')">Supprimer</button>
-    `;
-
-    main.appendChild(newSection);
-}
-
 
 // Fonction de filtrage des poèmes en fonction de la recherche
 function searchPoem() {
