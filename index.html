@@ -41,9 +41,7 @@
                     <button class="poem-button" onclick="scrollToPoem('poem3')">Mignonne, allons voir si la rose</button>
                 </li>
                 <li><button id="addPoemButton" class="poem-button hidden" onclick="addPoem()">Ajouter un poème</button></li>
-                <div class="sidebar-version">V1.21</div>
-                <button onclick="openModal()">Créer un poème</button>
-
+                <div class="sidebar-version">V1.11</div>
             </ul>
         </div>
         <main>
@@ -76,18 +74,6 @@
             </div>
         </main>
     </div>
-    <div id="poemModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Écrire un poème</h2>
-            <form id="poemForm">
-                <textarea id="poemText" rows="5" cols="50" placeholder="Écrivez votre poème ici..."></textarea>
-                <br>
-                <button type="button" onclick="savePoem()">Sauvegarder</button>
-            </form>
-        </div>
-    </div>
-    
 
     <script>
         function loginAsEleve() {
