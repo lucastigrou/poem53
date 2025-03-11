@@ -6,6 +6,11 @@ function showAlert(message, type = 'info') {
     document.body.appendChild(alert);
     setTimeout(() => alert.remove(), 3000); // Disparaît après 3 secondes
 }
+function toggleMenu() {
+    let sidebar = document.querySelector(".sidebar");
+    sidebar.classList.toggle("open");
+}
+    
 
 // Fonction de filtrage des poèmes en fonction de la recherche
 function searchPoem() {
